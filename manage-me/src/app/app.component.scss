@@ -1,0 +1,32 @@
+nav {
+    display: block;
+    background-color: dodgerblue;
+    color: white;
+    font-size: 20px;
+    padding: 5px 0;
+    position: sticky;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: capitalize;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+}

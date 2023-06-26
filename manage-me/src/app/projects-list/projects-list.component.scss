@@ -1,0 +1,15 @@
+ul {
+    border: 2px solid dodgerblue;
+    padding: 10px;
+    list-style-type: none;
+}
+
+li {
+    border: 2px solid dodgerblue;
+    padding: 10px;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #eee;
+}
