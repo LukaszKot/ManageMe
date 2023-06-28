@@ -1,6 +1,5 @@
-﻿namespace ManageMe.Dtos;
+﻿using ManageMe.Enums;
 
-public class UpdateFeatureCommand
-{
-    
-}
+namespace ManageMe.Dtos;
+
+public record UpdateFeatureCommand(int Id,string Name, string Description, Priority Priority, State State);

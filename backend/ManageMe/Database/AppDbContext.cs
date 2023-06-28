@@ -10,5 +10,5 @@ public class AppDbContext : DbContext
         
     }
 
-    private DbSet<Feature> Features { get; set; } = default!;
+    public DbSet<Feature> Features { get; set; } = default!;
 }
