@@ -9,6 +9,6 @@ export class ProjectsService {
   project: Project;
 
   constructor() {
-    this.project = new Project("The Lorem Ipsum Project", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris cursus auctor eros, ullamcorper pulvinar mauris vulputate nec. Praesent blandit a.", "TLIP");
+    this.project = new Project("The Lorem Ipsum Project", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris cursus auctor eros, ullamcorper pulvinar mauris vulputate nec.", "TLIP");
   }
 }

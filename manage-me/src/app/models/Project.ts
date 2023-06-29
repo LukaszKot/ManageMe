@@ -9,10 +9,10 @@ export class Project {
     }
 
     getBacklogLink() {
-        return `${this.code}/backlog`
+        return `/${this.code}/backlog`
     }
 
     getBoardLink() {
-        return `${this.code}/board`
+        return `/${this.code}/board`
     }
 }

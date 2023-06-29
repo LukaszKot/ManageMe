@@ -1,1 +1,24 @@
-<p>backlog-page works!</p>
+<div class="project">
+    <h2>{{project!.name}}</h2>
+    <p>{{project!.description}}</p>
+</div>
+<div class="features">
+    <div class="feature" *ngFor="let feature of features">
+        <div class="feature-flex">
+            <span class="code">{{project!.code}}-{{feature.id}}</span>
+            <span class="name">{{feature.name}}</span>
+            <span [ngClass]="{
+            'grey': feature.state === 0,
+            'blue': feature.state === 1,
+            'green': feature.state === 2,
+        }">{{State[feature.state].toUpperCase()}}</span>
+            <i class="fa-solid" [ngClass]="{
+            'fa-arrow-up': feature.priority === 0, 
+            'fa-arrow-right': feature.priority === 1, 
+            'fa-arrow-down': feature.priority === 2}"></i>
+        </div>
+    </div>
+    <div class="feature" (click)="addNew()">
+        <div class="feature-flex add">+</div>
+    </div>
+</div>

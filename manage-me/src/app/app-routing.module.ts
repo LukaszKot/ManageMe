@@ -6,6 +6,7 @@ import { BacklogPageComponent } from './backlog-page/backlog-page.component';
 const routes: Routes = [
   { path: '', component: ProjectsListComponent },
   { path: ':project/backlog', component: BacklogPageComponent },
+  { path: ':project/feature/add', component: BacklogPageComponent },
 ];
 
 @NgModule({
