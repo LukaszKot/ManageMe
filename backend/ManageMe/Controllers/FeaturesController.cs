@@ -27,15 +27,20 @@ public class FeaturesController : ControllerBase
             Priority = command.Priority,
             State = command.State
         };
-        var result=  await _dbContext.AddAsync(feature);
+
+        var uniqueEntity = new UniqueEntity { Feature = feature };
+        var result=  await _dbContext.AddAsync(uniqueEntity);
         await _dbContext.SaveChangesAsync();
-        return Ok(result.Entity);
+
+        var response = result.Entity.Feature;
+        response!.Id = result.Entity.Id;
+        return Ok(response);
     }
     
     [HttpPut]
     public async Task<IActionResult> Update([FromBody]UpdateFeatureCommand command)
     {
-        var feature = await _dbContext.Features.SingleOrDefaultAsync(x => x.Id == command.Id);
+        var feature = (await _dbContext.Features.SingleOrDefaultAsync(x => x.UniqueEntityId == command.Id));
         feature!.Description = command.Description;
         feature.Priority = command.Priority;
         feature.State = command.State;
@@ -49,13 +54,18 @@ public class FeaturesController : ControllerBase
     public async Task<IEnumerable<Feature>> GetAll()
     {
         var features = await _dbContext.Features.ToListAsync();
-        return features;
+        return features.Select(x =>
+        {
+            x.Id = x.UniqueEntityId;
+            return x;
+        });
     }
     
     [HttpGet("{id}")]
     public async Task<Feature> Get(int id)
     {
-        var feature = await _dbContext.Features.SingleOrDefaultAsync(x => x.Id == id);
+        var feature = await _dbContext.Features.SingleOrDefaultAsync(x => x.UniqueEntityId == id);
+        feature!.Id = feature.UniqueEntityId;
         return feature!;
     }
     
@@ -63,7 +73,7 @@ public class FeaturesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _dbContext.Features.Where(x => x.Id == id).ExecuteDeleteAsync();
+        await _dbContext.Features.Where(x => x.UniqueEntityId == id).ExecuteDeleteAsync();
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
