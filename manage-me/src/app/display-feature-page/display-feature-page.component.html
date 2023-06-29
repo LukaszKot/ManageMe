@@ -1,0 +1,11 @@
+<div class="go-back"><i class="fa-solid fa-arrow-left"
+        [routerLink]="project!.getBacklogLink()"></i>{{project!.code}}-{{model?.id}}</div>
+
+
+<p>Name: {{model?.name}}</p>
+<p>Description: <br />{{model?.description}}</p>
+<p>Priority: {{model?.priority ? Priority[model!.priority] : Priority[Priority.High] }}</p>
+<p>Status: {{model?.state ? State[model!.state]: State[State.Todo] }}</p>
+
+<button (click)="update()">Edit</button>
+<button class="red" (click)="delete()">Delete</button>

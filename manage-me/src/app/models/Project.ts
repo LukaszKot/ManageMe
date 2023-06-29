@@ -15,4 +15,8 @@ export class Project {
     getBoardLink() {
         return `/${this.code}/board`
     }
+
+    getFeatureLink(id: number) {
+        return `/${this.code}/feature/${id}`
+    }
 }

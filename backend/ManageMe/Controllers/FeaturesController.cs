@@ -27,9 +27,9 @@ public class FeaturesController : ControllerBase
             Priority = command.Priority,
             State = command.State
         };
-        _dbContext.Add(feature);
+        var result=  await _dbContext.AddAsync(feature);
         await _dbContext.SaveChangesAsync();
-        return Ok();
+        return Ok(result.Entity);
     }
     
     [HttpPut]

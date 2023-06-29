@@ -1,9 +1,17 @@
-export interface Feature {
-    id: number,
-    name: string,
-    description: string,
-    priority: Priority,
-    state: State
+export class Feature {
+    id?: number;
+    name: string;
+    description: string;
+    priority: Priority;
+    state: State;
+
+    constructor(name: string, description: string, priority: Priority, state: State, id?: number) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+        this.state = state;
+    }
 }
 
 
