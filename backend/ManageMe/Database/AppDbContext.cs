@@ -27,6 +27,12 @@ public class AppDbContext : DbContext
             .HasOne<UniqueEntity>().WithOne(x => x.Feature)
             .HasForeignKey<Feature>()
             .IsRequired();
+        
+        modelBuilder.Entity<Feature>()
+            .HasMany<Task>(x => x.Tasks).WithOne()
+            .HasForeignKey(x => x.FeatureId)
+            .OnDelete(DeleteBehavior.ClientCascade)
+            .IsRequired();
         base.OnModelCreating(modelBuilder);
     }
 }

@@ -64,8 +64,13 @@ public class FeaturesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<Feature> Get(int id)
     {
-        var feature = await _dbContext.Features.SingleOrDefaultAsync(x => x.UniqueEntityId == id);
+        var feature = await _dbContext.Features.Include(x => x.Tasks).SingleOrDefaultAsync(x => x.UniqueEntityId == id);
         feature!.Id = feature.UniqueEntityId;
+        feature.Tasks = feature.Tasks.Select(x =>
+        {
+            x.Id = x.UniqueEntityId;
+            return x;
+        }).ToList();
         return feature!;
     }
     

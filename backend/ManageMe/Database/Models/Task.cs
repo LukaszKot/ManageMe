@@ -15,4 +15,5 @@ public class Task
     public DateTime? EndedOn { get; set; }
     public string? AssignedUser { get; set; }
     public int UniqueEntityId { get; set; }
+    public int FeatureId { get; set; }
 }

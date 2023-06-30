@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageMe.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230629191940_AddedTasks")]
-    partial class AddedTasks
+    [Migration("20230630143219_ResetMigration")]
+    partial class ResetMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,9 @@ namespace ManageMe.Migrations
                     b.Property<int>("ExpectedTime")
                         .HasColumnType("int");
 
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -99,6 +102,8 @@ namespace ManageMe.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FeatureId");
 
                     b.HasIndex("UniqueEntityId")
                         .IsUnique();
@@ -130,11 +135,22 @@ namespace ManageMe.Migrations
 
             modelBuilder.Entity("ManageMe.Database.Models.Task", b =>
                 {
+                    b.HasOne("ManageMe.Database.Models.Feature", null)
+                        .WithMany("Tasks")
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
                     b.HasOne("ManageMe.Database.Models.UniqueEntity", null)
                         .WithOne("Task")
                         .HasForeignKey("ManageMe.Database.Models.Task", "UniqueEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ManageMe.Database.Models.Feature", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 
             modelBuilder.Entity("ManageMe.Database.Models.UniqueEntity", b =>

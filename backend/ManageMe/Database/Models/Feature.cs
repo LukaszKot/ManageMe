@@ -10,4 +10,5 @@ public class Feature
     public Priority Priority { get; set; }
     public State State { get; set; }
     public int UniqueEntityId { get; set; }
+    public ICollection<Task> Tasks { get; set; } = new List<Task>();
 }
