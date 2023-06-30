@@ -3,6 +3,7 @@ import { Feature, Priority, State } from '../models/Feature';
 import { ProjectsService } from '../services/projects.service';
 import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-edit-feature-page',
@@ -18,10 +19,14 @@ export class EditFeaturePageComponent implements OnInit {
     this.apiService.updateFeature(this.model)
       .subscribe((o) => this.router.navigate([`${this.projectService.project.code}/feature/${this.model.id}`]))
   }
-  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
     this.apiService.getFeature(+this.route.snapshot.paramMap.get('id')!)
       .subscribe(x => this.model = x);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

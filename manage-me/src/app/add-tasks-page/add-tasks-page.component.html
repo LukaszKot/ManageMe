@@ -1,5 +1,5 @@
-<div class="go-back"><i class="fa-solid fa-arrow-left"
-        (click)="goBack()"></i>{{projectService.project.code}}-{{model.id}}</div>
+<div class="go-back"><i class="fa-solid fa-arrow-left" (click)="goBack()"></i>Add
+    task</div>
 
 <form #featureForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -29,5 +29,24 @@
             </select>
         </div>
     </div>
-    <input type="submit" value="Edit" [disabled]="!featureForm.form.valid" />
+    <div class="form-group">
+        <div class="form-group-flex">
+            <label for="expectedTime">Expected time (h): </label>
+            <input #expectedTime="ngModel" type="number" id="expectedTime" name="expectedTime" required
+                [(ngModel)]="model.expectedTime" />
+        </div>
+    </div>
+    <div [hidden]="expectedTime.valid || expectedTime.pristine" class="alert alert-danger">
+        Expected time is required
+    </div>
+    <div class="form-group">
+        <div class="form-group-flex">
+            <label for="feature">Feature: </label>
+            <select id="feature" name="feature" required [(ngModel)]="model.featureId">
+                <option *ngFor="let feature of features" [value]="feature.id">
+                    {{projectService.project.code}}-{{feature.id}} {{feature.name}}</option>
+            </select>
+        </div>
+    </div>
+    <input type="submit" value="Add" [disabled]="!featureForm.form.valid" />
 </form>

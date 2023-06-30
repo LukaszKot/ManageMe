@@ -80,9 +80,9 @@ public class TasksController : ControllerBase
     [HttpGet("{id}")]
     public async Task<Task> Get(int id)
     {
-        var feature = await _dbContext.Tasks.SingleOrDefaultAsync(x => x.UniqueEntityId == id);
-        feature!.Id = feature.UniqueEntityId;
-        return feature!;
+        var task = await _dbContext.Tasks.SingleOrDefaultAsync(x => x.UniqueEntityId == id);
+        task!.Id = task.UniqueEntityId;
+        return task!;
     }
     
     

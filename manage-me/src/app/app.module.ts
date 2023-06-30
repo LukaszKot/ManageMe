@@ -10,6 +10,10 @@ import { AddFeaturePageComponent } from './add-feature-page/add-feature-page.com
 import { FormsModule } from '@angular/forms';
 import { DisplayFeaturePageComponent } from './display-feature-page/display-feature-page.component';
 import { EditFeaturePageComponent } from './edit-feature-page/edit-feature-page.component';
+import { TasksPageComponent } from './tasks-page/tasks-page.component';
+import { AddTasksPageComponent } from './add-tasks-page/add-tasks-page.component';
+import { DisplayTaskPageComponent } from './display-task-page/display-task-page.component';
+import { EditTaskPageComponent } from './edit-task-page/edit-task-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { EditFeaturePageComponent } from './edit-feature-page/edit-feature-page.
     BacklogPageComponent,
     AddFeaturePageComponent,
     DisplayFeaturePageComponent,
-    EditFeaturePageComponent
+    EditFeaturePageComponent,
+    TasksPageComponent,
+    AddTasksPageComponent,
+    DisplayTaskPageComponent,
+    EditTaskPageComponent
   ],
   imports: [
     BrowserModule,

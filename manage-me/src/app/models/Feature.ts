@@ -1,16 +1,20 @@
+import { Task } from "./Task";
+
 export class Feature {
     id?: number;
     name: string;
     description: string;
     priority: Priority;
     state: State;
+    tasks: Task[]
 
-    constructor(name: string, description: string, priority: Priority, state: State, id?: number) {
+    constructor(name: string, description: string, priority: Priority, state: State, tasks: Task[] = [], id?: number) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.priority = priority;
         this.state = state;
+        this.tasks = tasks
     }
 }
 

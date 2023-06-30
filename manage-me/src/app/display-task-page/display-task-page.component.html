@@ -1,0 +1,16 @@
+<div class="go-back"><i class="fa-solid fa-arrow-left" (click)="goBack()"></i>{{project!.code}}-{{model?.id}}</div>
+
+<p>Name: {{model?.name}}</p>
+<p>Description: <br />{{model?.description}}</p>
+<p>Priority: {{model?.priority ? Priority[model!.priority] : Priority[Priority.High] }}</p>
+<p>Status: {{model?.state ? State[model!.state]: State[State.Todo] }}</p>
+<p>Expected time: {{model?.expectedTime }}</p>
+<p>Created on: {{model?.createdOn }}</p>
+<p>Started on: {{model?.startedOn ?? "Not started yet" }}</p>
+<p>Enden on: {{model?.endedOn ?? "Not ended yet" }}</p>
+<p>Assigned to: {{model?.assignedUser ?? "User not assigned" }}</p>
+<p>Feature: <a [routerLink]="['/TLIP/feature/', feature?.id]">{{project?.code }}-{{feature?.id }} {{feature?.name }}</a>
+</p>
+
+<button (click)="update()">Edit</button>
+<button class="red" (click)="delete()">Delete</button>

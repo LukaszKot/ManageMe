@@ -13,10 +13,14 @@ export class Project {
     }
 
     getBoardLink() {
-        return `/${this.code}/board`
+        return `/${this.code}/kanban`
     }
 
     getFeatureLink(id: number) {
         return `/${this.code}/feature/${id}`
+    }
+
+    getTaskLink(id: number) {
+        return `/${this.code}/tasks/${id}`
     }
 }
