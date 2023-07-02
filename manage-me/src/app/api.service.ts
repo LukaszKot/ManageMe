@@ -14,7 +14,6 @@ export class ApiService {
 
   getFeatures(): Observable<Feature[]> {
     return new Observable((observer) => {
-      console.log(this.features)
       observer.next(this.features)
     });
   }
@@ -23,7 +22,6 @@ export class ApiService {
     return new Observable((observer) => {
       this.features.push(feature)
       feature.id = ++this.counter;
-      console.log(this.features)
       observer.next(feature)
     });
   }
@@ -31,7 +29,6 @@ export class ApiService {
   getFeature(id: number): Observable<Feature> {
     return new Observable((observer) => {
       let feature = this.features.find(x => x.id == id);
-      console.log(this.features)
       observer.next(feature)
     });
   }
@@ -39,7 +36,6 @@ export class ApiService {
   deleteFeature(id: number): Observable<any> {
     return new Observable((observer) => {
       this.features = this.features.filter(x => !(x.id == id));
-      console.log(this.features)
       observer.next()
     });
   }
@@ -49,14 +45,12 @@ export class ApiService {
       this.features = this.features.filter(x => !(x.id == feature.id));
       this.features.push(feature);
       this.features = this.features.sort((a, b) => a.id! - b.id!)
-      console.log(this.features)
       observer.next()
     });
   }
 
   getTasks(): Observable<Task[]> {
     return new Observable((observer) => {
-      console.log(this.features)
       observer.next(this.features.flatMap(x => x.tasks).sort((a, b) => a.id! - b.id!))
     });
   }
@@ -67,14 +61,12 @@ export class ApiService {
       task.featureId = +task.featureId;
       feature?.tasks.push(task)
       task.id = ++this.counter;
-      console.log(this.features)
       observer.next(task)
     });
   }
 
   getTask(id: number): Observable<Task> {
     return new Observable((observer) => {
-      console.log(this.features)
       observer.next(this.features.flatMap(x => x.tasks).find(x => x.id == id))
     });
   }
@@ -83,7 +75,6 @@ export class ApiService {
     return new Observable((observer) => {
       let feature = this.features.find(x => x.tasks.findIndex(x => x.id == id));
       feature!.tasks = feature!.tasks.filter(x => !(x.id == id))
-      console.log(this.features)
       observer.next()
     });
   }
@@ -91,12 +82,11 @@ export class ApiService {
   updateTask(task: Task): Observable<any> {
     return new Observable((observer) => {
       task.featureId = +task.featureId;
-      let feature = this.features.find(x => x.tasks.findIndex(x => x.id == task.id) != -1);
+      let feature = this.features.find(x => x.tasks.filter(x => x.id == task.id).length != 0);
       feature!.tasks = feature!.tasks.filter(x => !(x.id == task.id))
       let newFeature = this.features.find(x => x.id == +task.featureId)
       newFeature?.tasks.push(task)
-      newFeature!.tasks = feature!.tasks.sort((a, b) => a.id! - b.id!)
-      console.log(this.features)
+      newFeature!.tasks = newFeature!.tasks.sort((a, b) => a.id! - b.id!)
       observer.next()
     });
   }
