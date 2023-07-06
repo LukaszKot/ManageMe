@@ -9,12 +9,13 @@ import { TasksPageComponent } from './tasks-page/tasks-page.component';
 import { AddTasksPageComponent } from './add-tasks-page/add-tasks-page.component';
 import { DisplayTaskPageComponent } from './display-task-page/display-task-page.component';
 import { EditTaskPageComponent } from './edit-task-page/edit-task-page.component';
+import { KanbanPageComponent } from './kanban-page/kanban-page.component';
 
 const routes: Routes = [
   { path: '', component: ProjectsListComponent },
   { path: ':project/backlog', component: BacklogPageComponent },
   { path: ':project/tasks', component: TasksPageComponent },
-  { path: ':project/kanban', component: BacklogPageComponent },
+  { path: ':project/kanban', component: KanbanPageComponent },
   { path: ':project/feature/add', component: AddFeaturePageComponent },
   { path: ':project/tasks/add', component: AddTasksPageComponent },
   { path: ':project/feature/:id', component: DisplayFeaturePageComponent },
