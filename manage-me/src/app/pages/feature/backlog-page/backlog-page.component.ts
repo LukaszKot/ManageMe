@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { Feature, Priority, State } from '../models/Feature';
-import { ProjectsService } from '../services/projects.service';
-import { Project } from '../models/Project';
+import { ApiService } from '../../../services/api.service';
+import { Feature, Priority, State } from '../../../models/Feature';
+import { ProjectsService } from '../../../services/projects.service';
+import { Project } from '../../../models/Project';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Task } from '../models/Task';
+import { Task } from '../../../models/Task';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
-import { Feature, Priority, State } from '../models/Feature';
-import { Project } from '../models/Project';
-import { ProjectsService } from '../services/projects.service';
-import { UserService } from '../services/user.service';
+import { ApiService } from '../../../services/api.service';
+import { Feature, Priority, State } from '../../../models/Feature';
+import { Project } from '../../../models/Project';
+import { ProjectsService } from '../../../services/projects.service';
+import { UserService } from '../../../services/user.service';
 import { finalize, of, switchMap } from 'rxjs';
 
 

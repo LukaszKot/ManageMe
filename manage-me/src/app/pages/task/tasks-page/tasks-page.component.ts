@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Feature, Priority, State } from '../models/Feature';
-import { Project } from '../models/Project';
-import { ApiService } from '../api.service';
-import { ProjectsService } from '../services/projects.service';
+import { Feature, Priority, State } from '../../../models/Feature';
+import { Project } from '../../../models/Project';
+import { ApiService } from '../../../services/api.service';
+import { ProjectsService } from '../../../services/projects.service';
 import { Router } from '@angular/router';
-import { Task } from '../models/Task';
+import { Task } from '../../../models/Task';
 
 @Component({
   selector: 'app-tasks-page',

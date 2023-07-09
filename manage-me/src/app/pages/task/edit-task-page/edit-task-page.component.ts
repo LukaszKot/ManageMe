@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from '../api.service';
-import { Priority, Feature, State } from '../models/Feature';
-import { ProjectsService } from '../services/projects.service';
-import { Task } from '../models/Task';
+import { ApiService } from '../../../services/api.service';
+import { Priority, Feature, State } from '../../../models/Feature';
+import { ProjectsService } from '../../../services/projects.service';
+import { Task } from '../../../models/Task';
 import { Location } from '@angular/common'
 
 @Component({

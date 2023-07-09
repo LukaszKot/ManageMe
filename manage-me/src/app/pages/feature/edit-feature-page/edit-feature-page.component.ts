@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Feature, Priority, State } from '../models/Feature';
-import { ProjectsService } from '../services/projects.service';
-import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common'
+import { ApiService } from 'src/app/services/api.service';
+import { Priority, Feature, State } from 'src/app/models/Feature';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-edit-feature-page',

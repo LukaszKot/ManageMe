@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Feature, Priority, State } from '../models/Feature';
-import { ApiService } from '../api.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Project } from '../models/Project';
-import { ProjectsService } from '../services/projects.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ApiService } from "src/app/services/api.service";
+import { Feature, Priority, State } from "src/app/models/Feature";
+import { Project } from "src/app/models/Project";
+import { ProjectsService } from "src/app/services/projects.service";
 import { Location } from '@angular/common'
-import { Task } from '../models/Task';
 
 @Component({
   selector: 'app-display-feature-page',

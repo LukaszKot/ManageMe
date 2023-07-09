@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Feature, Priority, State } from '../models/Feature';
-import { Project } from '../models/Project';
+import { Feature, Priority, State } from '../../../models/Feature';
+import { Project } from '../../../models/Project';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../api.service';
-import { ProjectsService } from '../services/projects.service';
-import { Task } from '../models/Task';
+import { ApiService } from '../../../services/api.service';
+import { ProjectsService } from '../../../services/projects.service';
+import { Task } from '../../../models/Task';
 import { Location } from '@angular/common'
 
 @Component({

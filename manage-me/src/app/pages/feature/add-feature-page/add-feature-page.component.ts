@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ProjectsService } from '../services/projects.service';
-import { Priority, Feature, State } from '../models/Feature';
-import { ApiService } from '../api.service';
+import { ProjectsService } from '../../../services/projects.service';
+import { Priority, Feature, State } from '../../../models/Feature';
+import { ApiService } from '../../../services/api.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common'
 
