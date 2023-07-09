@@ -15,6 +15,7 @@ import { EditTaskPageComponent } from './pages/task/edit-task-page/edit-task-pag
 import { KanbanPageComponent } from './pages/task/kanban-page/kanban-page.component';
 import { DisplayFeaturePageComponent } from './pages/feature/display-feature-page/display-feature-page.component';
 import { EditFeaturePageComponent } from './pages/feature/edit-feature-page/edit-feature-page.component';
+import { NavigationHeaderComponent } from './components/navigation-header/navigation-header.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditFeaturePageComponent } from './pages/feature/edit-feature-page/edit
     AddTasksPageComponent,
     DisplayTaskPageComponent,
     EditTaskPageComponent,
-    KanbanPageComponent
+    KanbanPageComponent,
+    NavigationHeaderComponent
   ],
   imports: [
     BrowserModule,

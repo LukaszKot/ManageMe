@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { ProjectsService } from '../../../services/projects.service';
 import { Task } from '../../../models/Task';
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-display-task-page',
@@ -29,7 +28,7 @@ export class DisplayTaskPageComponent {
   Priority = Priority;
   State = State;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private projectService: ProjectsService, private router: Router, private location: Location) {
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private projectService: ProjectsService, private router: Router) {
   }
 
   update() {
@@ -39,9 +38,5 @@ export class DisplayTaskPageComponent {
   delete() {
     this.apiService.deleteTask(+this.route.snapshot.paramMap.get('id')!)
       .subscribe(() => this.router.navigate(['/TLIP/tasks']));
-  }
-
-  goBack() {
-    this.location.back();
   }
 }

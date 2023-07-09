@@ -4,7 +4,6 @@ import { ApiService } from '../../../services/api.service';
 import { Priority, Feature, State } from '../../../models/Feature';
 import { ProjectsService } from '../../../services/projects.service';
 import { Task } from '../../../models/Task';
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-edit-task-page',
@@ -21,7 +20,7 @@ export class EditTaskPageComponent {
     this.apiService.updateTask(this.model)
       .subscribe((o) => this.router.navigate([`${this.projectService.project.code}/tasks/${this.model.id}`]))
   }
-  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router, private route: ActivatedRoute, private location: Location) { }
+  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.apiService.getTask(+this.route.snapshot.paramMap.get('id')!)
@@ -31,9 +30,5 @@ export class EditTaskPageComponent {
         this.features = o
       }
       );
-  }
-
-  goBack() {
-    this.location.back();
   }
 }

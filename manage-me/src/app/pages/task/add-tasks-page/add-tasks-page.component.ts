@@ -4,7 +4,6 @@ import { ApiService } from '../../../services/api.service';
 import { ProjectsService } from '../../../services/projects.service';
 import { Router } from '@angular/router';
 import { Task } from '../../../models/Task';
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-add-tasks-page',
@@ -21,7 +20,7 @@ export class AddTasksPageComponent implements OnInit {
     this.apiService.addTask(this.model)
       .subscribe((o) => this.router.navigate([`${this.projectService.project.code}/tasks/${o.id}`]))
   }
-  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router, private location: Location) { }
+  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router) { }
   ngOnInit(): void {
     this.apiService.getFeatures()
       .subscribe((o) => {
@@ -29,9 +28,5 @@ export class AddTasksPageComponent implements OnInit {
         this.model.featureId = this.features[0]?.id ?? 0;
       }
       );
-  }
-
-  goBack() {
-    this.location.back();
   }
 }

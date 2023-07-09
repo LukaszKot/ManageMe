@@ -4,7 +4,6 @@ import { ApiService } from "src/app/services/api.service";
 import { Feature, Priority, State } from "src/app/models/Feature";
 import { Project } from "src/app/models/Project";
 import { ProjectsService } from "src/app/services/projects.service";
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-display-feature-page',
@@ -23,7 +22,7 @@ export class DisplayFeaturePageComponent implements OnInit {
   Priority = Priority;
   State = State;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private projectService: ProjectsService, private router: Router, private location: Location) {
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private projectService: ProjectsService, private router: Router) {
   }
 
   update() {
@@ -33,9 +32,5 @@ export class DisplayFeaturePageComponent implements OnInit {
   delete() {
     this.apiService.deleteFeature(+this.route.snapshot.paramMap.get('id')!)
       .subscribe(() => this.router.navigate([this.project?.getBacklogLink()]));
-  }
-
-  goBack() {
-    this.location.back();
   }
 }

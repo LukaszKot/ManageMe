@@ -1,5 +1,4 @@
-<div class="go-back"><i class="fa-solid fa-arrow-left"
-        (click)="goBack()"></i>{{projectService.project.code}}-{{model.id}}</div>
+<app-navigation-header>{{projectService.project.code}}-{{model.id}}</app-navigation-header>
 
 <form #featureForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">

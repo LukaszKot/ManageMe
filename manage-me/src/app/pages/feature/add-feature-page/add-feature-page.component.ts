@@ -3,7 +3,6 @@ import { ProjectsService } from '../../../services/projects.service';
 import { Priority, Feature, State } from '../../../models/Feature';
 import { ApiService } from '../../../services/api.service';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-add-feature-page',
@@ -19,9 +18,5 @@ export class AddFeaturePageComponent {
     this.apiService.addFeature(this.model)
       .subscribe((o) => this.router.navigate([`${this.projectService.project.code}/feature/${o.id}`]))
   }
-  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router, private location: Location) { }
-
-  goBack() {
-    this.location.back();
-  }
+  constructor(public projectService: ProjectsService, private apiService: ApiService, private router: Router) { }
 }
