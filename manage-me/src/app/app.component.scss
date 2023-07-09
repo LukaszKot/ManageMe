@@ -33,3 +33,10 @@ main {
     max-width: 1080px;
     margin: 0 auto;
 }
+
+div.container {
+    border: 2px solid dodgerblue;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+}
