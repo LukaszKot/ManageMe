@@ -13,11 +13,15 @@ export class ApiService {
   constructor() {
     let data = localStorage.getItem('features');
     this.features = data ? JSON.parse(data) : [];
+    let maxFeature = Math.max(...this.features.map(x => x.id ?? -1));
+    let maxTask = Math.max(...this.features.flatMap(x => x.tasks).sort((a, b) => a.id! - b.id!).map(x => x.id ?? -1));
+    this.counter = Math.max(maxFeature, maxTask) + 1;
   }
 
   getFeatures(): Observable<Feature[]> {
     return new Observable((observer) => {
       observer.next(this.features)
+      observer.complete();
     });
   }
 
@@ -29,6 +33,7 @@ export class ApiService {
       feature.id = ++this.counter;
       localStorage.setItem('features', JSON.stringify(this.features))
       observer.next(feature)
+      observer.complete();
     });
   }
 
@@ -36,6 +41,7 @@ export class ApiService {
     return new Observable((observer) => {
       let feature = this.features.find(x => x.id == id);
       observer.next(feature)
+      observer.complete();
     });
   }
 
@@ -44,6 +50,7 @@ export class ApiService {
       this.features = this.features.filter(x => !(x.id == id));
       localStorage.setItem('features', JSON.stringify(this.features))
       observer.next()
+      observer.complete();
     });
   }
 
@@ -56,12 +63,14 @@ export class ApiService {
       this.features = this.features.sort((a, b) => a.id! - b.id!)
       localStorage.setItem('features', JSON.stringify(this.features))
       observer.next()
+      observer.complete();
     });
   }
 
   getTasks(): Observable<Task[]> {
     return new Observable((observer) => {
       observer.next(this.features.flatMap(x => x.tasks).sort((a, b) => a.id! - b.id!))
+      observer.complete();
     });
   }
 
@@ -75,12 +84,14 @@ export class ApiService {
       task.id = ++this.counter;
       localStorage.setItem('features', JSON.stringify(this.features))
       observer.next(task)
+      observer.complete();
     });
   }
 
   getTask(id: number): Observable<Task> {
     return new Observable((observer) => {
       observer.next(this.features.flatMap(x => x.tasks).find(x => x.id == id))
+      observer.complete();
     });
   }
 
@@ -90,6 +101,7 @@ export class ApiService {
       feature!.tasks = feature!.tasks.filter(x => !(x.id == id))
       localStorage.setItem('features', JSON.stringify(this.features))
       observer.next()
+      observer.complete();
     });
   }
 
@@ -105,6 +117,7 @@ export class ApiService {
       newFeature!.tasks = newFeature!.tasks.sort((a, b) => a.id! - b.id!)
       localStorage.setItem('features', JSON.stringify(this.features))
       observer.next()
+      observer.complete();
     });
   }
 }

@@ -1,1 +1,48 @@
-<p>kanban-page works!</p>
+<div class="project">
+    <h2>{{project!.name}}</h2>
+    <p>{{project!.description}}</p>
+    <h3>Kanban</h3>
+</div>
+<div class="features">
+    <div class="todo">
+        <h3>Todo:</h3>
+        <div class="feature" *ngFor="let task of tasks?.todo">
+            <div class="feature-flex">
+                <span class="code" [routerLink]="project!.getTaskLink(task.id!)">{{project!.code}}-{{task.id}}</span>
+                <span class="name">{{task.name}}</span>
+                <i class="fa-solid" [ngClass]="{
+            'fa-arrow-up': task.priority === 0, 
+            'fa-arrow-right': task.priority === 1, 
+            'fa-arrow-down': task.priority === 2}"></i>
+                <i class="fa-solid fa-caret-right" (click)="moveToInProgress(task.id!)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="doing">
+        <h3>Doing:</h3>
+        <div class="feature" *ngFor="let task of tasks?.doing">
+            <div class="feature-flex">
+                <span class="code" [routerLink]="project!.getTaskLink(task.id!)">{{project!.code}}-{{task.id}}</span>
+                <span class="name">{{task.name}}</span>
+                <i class="fa-solid" [ngClass]="{
+            'fa-arrow-up': task.priority === 0, 
+            'fa-arrow-right': task.priority === 1, 
+            'fa-arrow-down': task.priority === 2}"></i>
+                <i class="fa-solid fa-caret-right" (click)="moveToEnded(task.id!)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="done">
+        <h3>Done:</h3>
+        <div class="feature" *ngFor="let task of tasks?.done">
+            <div class="feature-flex">
+                <span class="code" [routerLink]="project!.getTaskLink(task.id!)">{{project!.code}}-{{task.id}}</span>
+                <span class="name">{{task.name}}</span>
+                <i class="fa-solid" [ngClass]="{
+            'fa-arrow-up': task.priority === 0, 
+            'fa-arrow-right': task.priority === 1, 
+            'fa-arrow-down': task.priority === 2}"></i>
+            </div>
+        </div>
+    </div>
+</div>
