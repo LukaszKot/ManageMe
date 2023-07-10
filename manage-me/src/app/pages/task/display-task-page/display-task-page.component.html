@@ -5,9 +5,9 @@
 <p>Priority: {{model?.priority ? Priority[model!.priority] : Priority[Priority.High] }}</p>
 <p>Status: {{model?.state ? State[model!.state]: State[State.Todo] }}</p>
 <p>Expected time: {{model?.expectedTime }} h</p>
-<p>Created on: {{model?.createdOn }}</p>
-<p>Started on: {{model?.startedOn ?? "Not started yet" }}</p>
-<p>Enden on: {{model?.endedOn ?? "Not ended yet" }}</p>
+<p>Created on: {{model?.createdOn?.toString() }}</p>
+<p>Started on: {{model?.startedOn?.toString() ?? "Not started yet" }}</p>
+<p>Enden on: {{model?.endedOn?.toString() ?? "Not ended yet" }}</p>
 <p>Assigned to: {{model?.assignedUser ?? "User not assigned" }}</p>
 <p>Feature: <a [routerLink]="['/TLIP/feature/', feature?.id]">{{project?.code }}-{{feature?.id }} {{feature?.name }}</a>
 </p>

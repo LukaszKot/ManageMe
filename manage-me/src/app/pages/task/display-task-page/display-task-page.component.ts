@@ -16,8 +16,11 @@ export class DisplayTaskPageComponent {
     this.apiService.getTask(+this.route.snapshot.paramMap.get('id')!)
       .subscribe(x => {
         this.model = x
+        this.model.createdOn = new Date(this.model.createdOn);
+        this.model.startedOn = this.model.startedOn != undefined ? new Date(this.model.startedOn) : undefined;
+        this.model.endedOn = this.model.endedOn != undefined ? new Date(this.model.endedOn) : undefined;
         this.apiService.getFeature(this.model.featureId)
-          .subscribe(x => this.feature = x)
+          .subscribe(x => { this.feature = x })
       });
     this.project = this.projectService.project;
   }
