@@ -16,6 +16,9 @@ import { KanbanPageComponent } from './pages/task/kanban-page/kanban-page.compon
 import { DisplayFeaturePageComponent } from './pages/feature/display-feature-page/display-feature-page.component';
 import { EditFeaturePageComponent } from './pages/feature/edit-feature-page/edit-feature-page.component';
 import { NavigationHeaderComponent } from './components/navigation-header/navigation-header.component';
+import { ItemComponent } from './components/item/item.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { ListHeaderComponent } from './components/list-header/list-header.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { NavigationHeaderComponent } from './components/navigation-header/naviga
     DisplayTaskPageComponent,
     EditTaskPageComponent,
     KanbanPageComponent,
-    NavigationHeaderComponent
+    NavigationHeaderComponent,
+    ItemComponent,
+    AddItemComponent,
+    ListHeaderComponent
   ],
   imports: [
     BrowserModule,

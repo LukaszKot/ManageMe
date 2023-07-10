@@ -1,0 +1,13 @@
+<div class="item-flex">
+    <span class="code">{{project!.code}}-{{item.id}}</span>
+    <span class="name">{{item.name}}</span>
+    <span [ngClass]="{
+        'grey': item.state === 0,
+        'blue': item.state === 1,
+        'green': item.state === 2,
+    }">{{State[item.state].toUpperCase()}}</span>
+    <i class="fa-solid" [ngClass]="{
+        'fa-arrow-up': item.priority === 0, 
+        'fa-arrow-right': item.priority === 1, 
+        'fa-arrow-down': item.priority === 2}"></i>
+</div>

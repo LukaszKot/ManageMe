@@ -1,0 +1,59 @@
+.grey {
+    color: #444;
+    font-weight: 700;
+    background-color: #888;
+    padding: 3px;
+}
+
+.blue {
+    color: #005299;
+    font-weight: 700;
+    background-color: #0096FF;
+    padding: 3px;
+}
+
+.green {
+    color: #38A900;
+    font-weight: 700;
+    background-color: #7CFC00;
+    padding: 3px;
+}
+
+:host {
+    border-bottom: 2px solid dodgerblue;
+    cursor: pointer;
+    display: block;
+}
+
+:host:hover {
+    background-color: #ddd;
+}
+
+.item-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    padding-right: 30px;
+}
+
+.name {
+    width: 80%;
+}
+
+.fa-arrow-up {
+    color: red;
+}
+
+.fa-arrow-right {
+    color: yellow;
+}
+
+.fa-arrow-down {
+    color: blue;
+}
+
+.code {
+    color: dodgerblue;
+}

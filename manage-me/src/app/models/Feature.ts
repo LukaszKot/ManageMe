@@ -1,6 +1,7 @@
+import { Item } from "./Item";
 import { Task } from "./Task";
 
-export class Feature {
+export class Feature implements Item {
     id?: number;
     name: string;
     description: string;

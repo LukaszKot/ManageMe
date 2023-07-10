@@ -1,6 +1,7 @@
 import { Priority, State } from "./Feature";
+import { Item } from "./Item";
 
-export class Task {
+export class Task implements Item {
     id?: number;
     name: string;
     description: string;

@@ -1,27 +1,13 @@
 <app-navigation-header>{{project!.code}}-{{model?.id}}</app-navigation-header>
 
-
 <p>Name: {{model?.name}}</p>
 <p>Description: <br />{{model?.description}}</p>
 <p>Priority: {{model?.priority ? Priority[model!.priority] : Priority[Priority.High] }}</p>
 <p>Status: {{model?.state ? State[model!.state]: State[State.Todo] }}</p>
 
-<div class="features">
-        <div class="feature" *ngFor="let task of model?.tasks" [routerLink]="project!.getTaskLink(task.id!)">
-                <div class="feature-flex">
-                        <span class="code">{{project!.code}}-{{task.id}}</span>
-                        <span class="name">{{task.name}}</span>
-                        <span [ngClass]="{
-                'grey': task.state === 0,
-                'blue': task.state === 1,
-                'green': task.state === 2,
-            }">{{State[task.state].toUpperCase()}}</span>
-                        <i class="fa-solid" [ngClass]="{
-                'fa-arrow-up': task.priority === 0, 
-                'fa-arrow-right': task.priority === 1, 
-                'fa-arrow-down': task.priority === 2}"></i>
-                </div>
-        </div>
+<div>
+        <app-item *ngFor="let task of model?.tasks" [routerLink]="project!.getTaskLink(task.id!)" [project]="project!"
+                [item]="task"></app-item>
 </div>
 
 <button (click)="update()">Edit</button>
