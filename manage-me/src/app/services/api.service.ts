@@ -13,6 +13,8 @@ export class ApiService {
   constructor() {
     let data = localStorage.getItem('features');
     this.features = data ? JSON.parse(data) : [];
+
+    if (this.features.length === 0) return;
     let maxFeature = Math.max(...this.features.map(x => x.id ?? -1));
     let maxTask = Math.max(...this.features.flatMap(x => x.tasks).sort((a, b) => a.id! - b.id!).map(x => x.id ?? -1));
     this.counter = Math.max(maxFeature, maxTask) + 1;
@@ -97,7 +99,7 @@ export class ApiService {
 
   deleteTask(id: number): Observable<any> {
     return new Observable((observer) => {
-      let feature = this.features.find(x => x.tasks.findIndex(x => x.id == id));
+      let feature = this.features.find(x => x.tasks.findIndex(x => x.id == id) != -1);
       feature!.tasks = feature!.tasks.filter(x => !(x.id == id))
       localStorage.setItem('features', JSON.stringify(this.features))
       observer.next()
